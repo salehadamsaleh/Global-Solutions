@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Global Solutions</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        html {
+        scroll-padding-top: 120px; /* adjust based on your navbar height */
+        }
+
+
+        #email{
+            color: orange;
+        }
+        section {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
+        /* Background Styling */
+        #home {
+            position: relative;
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #home-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: 0;
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .content-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Mobile menu */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .hamburger-icon span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background-color: #333;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        #lang-switcher.mobile {
+            display: block;
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        .toggle-menu span:first-child {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .toggle-menu span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .toggle-menu span:last-child {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+    
+/*new*/
+/* About Us Section: Custom list styling */
+#about-us ul {
+  list-style: none;       /* Remove default bullets */
+  padding-left: 0;        /* Remove default padding */
+}
+
+#about-us ul li {
+  position: relative;
+  padding-left: 2rem;     /* Space for custom bullet */
+  line-height: 1.6;       /* Better readability */
+  margin-bottom: 0.75rem; /* Space between items */
+}
+
+/* Custom bullets using ::before */
+#about-us ul li::before {
+  content: "•";           /* Custom bullet symbol */
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #1f2937;         /* Dark gray bullet */
+  font-weight: bold;
+}
+
+/* Optional: make heading and text spacing more modern */
+#about-us h2 {
+  margin-bottom: 2rem;
+}
+
+#about-us h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+#about-us p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+/*end of new*/
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  #about-us p,
+  #about-us li {
+    font-size: 0.95rem; /* Slightly smaller text for small screens */
+    line-height: 1.6;
+  }
+
+  #about-us h2 {
+    font-size: 2rem; /* Scale down the title */
+    margin-bottom: 2rem;
+  }
+
+  #about-us h3 {
+    font-size: 1.1rem;
+  }
+}
+
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo with image instead of text -->
+            <a href="#" class="inline-block" aria-label="Global Solutions Logo">
+                <img src="photo_2025-09-02_13-54-36.jpg" alt="Global Solutions Logo" class=" w-40 object-contain" onerror="this.src='https://placehold.co/128x64/E2E8F0/1A202C?text=Logo'">
+
+                <!-- <img src="photo_2025-09-02_13-54-36.jpg" alt="Global Solutions Logo" class="h-16 w-30 " onerror="this.src='https://placehold.co/128x64/E2E8F0/1A202C?text=Logo'"> -->
+            </a>
+            <div class="flex items-center space-x-6">
+                <!-- Desktop Navigation -->
+                <ul class="hidden md:flex space-x-6 font-medium">
+                    <li><a href="#home" class="text-gray-600 hover:text-blue-600 transition-colors" id="nav-home">Homepage</a></li>
+                    <li><a href="#services" class="text-gray-600 hover:text-blue-600 transition-colors" id="nav-services">Services</a></li>
+                    <li><a href="#turnkey-solutions" class="text-gray-600 hover:text-blue-600 transition-colors" id="nav-turnkey">Turnkey Solutions</a></li>
+                    <li><a href="#about-us" class="text-gray-600 hover:text-blue-600 transition-colors" id="nav-about">About Us</a></li>
+                </ul>
+                <button id="lang-switcher" class="bg-blue-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-blue-700 transition-colors">Français</button>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-600 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <ul class="flex flex-col items-center space-y-4 py-4 bg-white shadow-md">
+                <li><a href="#home" class="text-gray-600 hover:text-blue-600 transition-colors" id="nav-home-mobile">Homepage</a></li>
+                <li><a href="#services" class="text-gray-600 hover:text-blue-600 transition-colors" id="nav-services-mobile">Services</a></li>
+                <li><a href="#turnkey-solutions" class="text-gray-600 hover:text-blue-600 transition-colors" id="nav-turnkey-mobile">Turnkey Solutions</a></li>
+                <li><a href="#about-us" class="text-gray-600 hover:text-blue-600 transition-colors" id="nav-about-mobile">About Us</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home">
+            <!-- Background image from user upload -->
+            <img id="home-background" src="earth.gif" alt="Strategic background image" class="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 z-0 object-cover" onerror="this.src='https://placehold.co/1920x1080/4A5568/E2E8F0?text=Background'">
+            
+            <!-- Semi-transparent overlay for readability -->
+            <div class="video-overlay"></div>
+            <div class="content-container container mx-auto px-4 text-center text-white">
+                <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4" id="home-title">Strategic Security and Consulting</h1>
+                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto" id="home-subtitle">In a world with no room for error, we turn chaos into the battlespace and dominate it.</p>
+                <a href="#services" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-transform transform hover:scale-105 inline-block" id="home-cta">Learn More</a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+<section id="services" class="bg-white py-16">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center text-gray-900 mb-12" id="services-title">Our Services</h2>
+        
+        <!-- Grid for first three cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center mb-8">
+            <!-- Service Card: Defence and Security -->
+            <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-transform hover:scale-105">
+                <img src="defense(n).jpg" alt="Defence and Security" class="w-full h-auto rounded-t-lg" onerror="this.src='https://placehold.co/600x400/E2E8F0/1A202C?text=Defence+%26+Security'">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2" id="services-defence-title">Defence and Security</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" id="services-defence-text">In a world with no room for error, we turn chaos into the battlespace and dominate it.</p>
+                </div>
+            </div>
+
+            <!-- Service Card: Internal Security -->
+            <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-transform hover:scale-105">
+                <img src="internal security and counter-terrorism(n).jpg" alt="Internal Security" class="w-full h-auto rounded-t-lg" onerror="this.src='https://placehold.co/600x400/E2E8F0/1A202C?text=Internal+Security'">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2" id="services-internal-title">Internal Security & Counter-Terrorism</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" id="services-internal-text">In the field of internal security and counter-terrorism, we provide professional consulting to conduct realistic threat analyses and develop effective strategies. We offer strong and sustainable solutions against all types of threats through specialized training programs, risk/crisis management, and operational support services for security forces and institutions.</p>
+                </div>
+            </div>
+
+            <!-- Technology Modernization -->
+            <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-transform hover:scale-105">
+                <img src="tech(n).jpg" alt="Technology Modernization" class="w-full h-auto rounded-t-lg" onerror="this.src='https://placehold.co/600x400/E2E8F0/1A202C?text=Internal+Security'">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2" id="services-technology-title">Technology Modernization</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" id="services-technology-text">With our technology modernization services, we increase the effectiveness of systems used in defense and security against current threats. By harmonizing existing infrastructures with modern solutions, we enhance the holistic suitability and deterrence of military capabilities.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Flex container for last two cards, centered -->
+        <div class="flex flex-wrap justify-center gap-8">
+            <!-- Solution Card: Logistics Planning -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transform transition-transform hover:scale-105 w-full md:w-[45%] lg:w-[30%]">
+                <img src="car(n).jpg" alt="Logistics Planning" class="w-full h-auto rounded-t-lg" onerror="this.src='https://placehold.co/600x400/E2E8F0/1A202C?text=Logistics+Planning'">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2" id="services-logistics-title">Logistics Planning</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" id="services-logistics-text">With our logistics planning services, we ensure that all resources needed in defense and security are deployed at the right time, in the right place, appropriately, and in the most efficient manner. We provide uninterrupted contribution to operational success through strategic supply chain management, field support, and rapid logistics solutions.</p>
+                </div>
+            </div>
+
+            <!-- Service Card: Asymmetric Operations -->
+            <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-transform hover:scale-105 w-full md:w-[45%] lg:w-[30%]">
+                <img src="asymmetric(n).jpg" alt="Asymmetric Operations" class="w-full h-auto rounded-t-lg" onerror="this.src='https://placehold.co/600x400/E2E8F0/1A202C?text=Asymmetric+Operations'">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2" id="services-asymmetric-title">Asymmetric Operations</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" id="services-asymmetric-text">Our expert staff delivers consultancy and training support against complex and unpredictable asymmetric threat scenarios. We help institutions and units develop superior strategic capabilities against hybrid threats and security challenges, maximizing their operational effectiveness.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- Training Section -->
+<section id="training" class="bg-gray-100 py-16">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center text-gray-900 mb-12" id="services-training-title">Training</h2>
+
+        <!-- Flex container for all training cards -->
+        <div class="flex flex-wrap justify-center gap-8">
+            <!-- Card: Strategic/Operational/Tactical Planning Training -->
+            <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-transform hover:scale-105 w-full md:w-[45%] lg:w-[30%]">
+                <img src="tactical(n).jpg" alt="Special Operations" class="w-full h-auto rounded-t-lg" onerror="this.src='https://placehold.co/600x400/E2E8F0/1A202C?text=Special+Operations'">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2" id="services-strategic-title">Strategic/Operational/Tactical Planning Training</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" id="services-strategic-text">With our strategic, operational, and tactical planning training, we strengthen decision-making and implementation processes at various levels within units, headquarters, and institutions. Our training programs, based on realistic scenarios, maximize personnel risk/crisis management, resource utilization, and operational effectiveness.</p>
+                </div>
+            </div>
+
+            <!-- Card: Land Forces Training -->
+            <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-transform hover:scale-105 w-full md:w-[45%] lg:w-[30%]">
+                <img src="land force(n).jpg" alt="Special Operations" class="w-full h-auto rounded-t-lg" onerror="this.src='https://placehold.co/600x400/E2E8F0/1A202C?text=Special+Operations'">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2" id="services-land-title">Land Forces Training</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" id="services-land-text">With our Land Forces training, we aim to develop the knowledge, skills, and resilience personnel will need on the battlefield. With our next-generation training programs based on modern warfare doctrines, advanced tactical practices, and field experience, we maximize operational effectiveness and mission success.</p>
+                </div>
+            </div>
+
+            <!-- Card: Navy Forces Training -->
+            <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-transform hover:scale-105 w-full md:w-[45%] lg:w-[30%]">
+                <img src="navy(n).jpg" alt="Special Operations" class="w-full h-auto rounded-t-lg" onerror="this.src='https://placehold.co/600x400/E2E8F0/1A202C?text=Special+Operations'">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2" id="services-navy-title">Navy Forces Training</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" id="services-navy-text">With our Navy training, we ensure the development of strategic, operational, and tactical skills required in the maritime operational environment. With our next-generation training programs focused on modern naval operational doctrines, maritime security, and operational planning, we contribute to ensuring sea control and coastal defense, and protecting maritime rights and interests.</p>
+                </div>
+            </div>
+
+            <!-- Card: Air Forces Training -->
+            <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-transform hover:scale-105 w-full md:w-[45%] lg:w-[30%]">
+                <img src="air(n).jpg" alt="Special Operations" class="w-full h-auto rounded-t-lg" onerror="this.src='https://placehold.co/600x400/E2E8F0/1A202C?text=Special+Operations'">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2" id="services-air-title">Air Forces Training</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" id="services-air-text">Our Air Force training focuses on developing the strategic perspective, technical knowledge, and operational competencies personnel need for air operations. Our training programs, designed on modern air defense doctrines, advanced flight planning, and mission execution, contribute to achieving effectiveness and superiority.</p>
+                </div>
+            </div>
+
+            <!-- Card: Internal Security, Counter-Terrorism, And Civil Security Training -->
+            <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-transform hover:scale-105 w-full md:w-[45%] lg:w-[30%]">
+                <img src="civil(n).jpg" alt="Special Operations" class="w-full h-auto rounded-t-lg" onerror="this.src='https://placehold.co/600x400/E2E8F0/1A202C?text=Special+Operations'">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2" id="services-civil-title">Internal Security, Counter-Terrorism, And Civil Security Training</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" id="services-civil-text">Our internal security, counter-terrorism, and civil security training aims to prepare personnel for threats they may encounter in all environments, particularly in urban, rural, and sensitive areas. Through realistic scenarios, advanced tactical applications, and field-focused programs, we strengthen the effectiveness, deterrence, and risk/crisis management capabilities of security forces.</p>
+                </div>
+            </div>
+
+            <!-- Card: Border And Coastal Security Training -->
+            <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-transform hover:scale-105 w-full md:w-[45%] lg:w-[30%]">
+                <img src="border(n).jpg" alt="Special Operations" class="w-full h-auto rounded-t-lg" onerror="this.src='https://placehold.co/600x400/E2E8F0/1A202C?text=Special+Operations'">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2" id="services-coastal-title">Border And Coastal Security Training</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" id="services-coastal-text">Our border and coastal security training ensures that assigned units and personnel are prepared for all threats they may encounter at land and sea borders. Through advanced surveillance techniques, response strategies, and operational exercises, we increase the effectiveness of border and coastal security and provide the ability to respond quickly and accurately to threats.</p>
+                </div>
+            </div>
+
+            <!-- Card: Logistics And Equipment -->
+            <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-transform hover:scale-105 w-full md:w-[45%] lg:w-[30%]">
+                <img src="equipment(n).jpg" alt="Special Operations" class="w-full h-auto rounded-t-lg" onerror="this.src='https://placehold.co/600x400/E2E8F0/1A202C?text=Special+Operations'">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2" id="services-equipment-title">Logistics And Equipment</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" id="services-equipment-text">With our logistics and equipment services, we ensure the rapid procurement and supply of all types of tools, materials, equipment, and spare parts for security and defense. Through logistics planning, supply, maintenance and repair, supply management, and field support, we contribute to the uninterrupted and successful management of operations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Turnkey Solutions Section -->
+<section id="turnkey-solutions" class="bg-gray-100 py-16">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center text-gray-900 mb-12" id="turnkey-title">Turnkey Solutions</h2>
+
+        <!-- Flex container for all turnkey cards -->
+        <div class="flex flex-wrap justify-center gap-8">
+            <!-- Card: Marine/Coastal/Port Security -->
+            <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-transform hover:scale-105 w-full md:w-[45%] lg:w-[30%]">
+                <img src="marine(n).jpg" alt="Marine Security" class="w-full h-auto rounded-t-lg" onerror="this.src='https://placehold.co/600x400/E2E8F0/1A202C?text=Marine+Security'">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2" id="turnkey-marine-title">Marine, Coastal, & Port Security</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" id="turnkey-marine-text">Our marine, coastal, and port security solutions protect naval bases, shipyards, maritime transportation hubs, ports, merchant/fishing vessels, oil/natural gas platforms and critical coastal facilities from potential threats. With advanced underwater/surface/air/satellite monitoring systems, risk analysis, and operational planning, we contribute to the uninterrupted security of sea/coastal/port facilities and the protection of critical infrastructure.</p>
+                </div>
+            </div>
+
+            <!-- Card: Strategic Facility Security -->
+            <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-transform hover:scale-105 w-full md:w-[45%] lg:w-[30%]">
+                <img src="strategic facility(n).jpg" alt="Facility Security" class="w-full h-auto rounded-t-lg" onerror="this.src='https://placehold.co/600x400/E2E8F0/1A202C?text=Facility+Security'">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2" id="turnkey-facility-title">Strategic Facility Security</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" id="turnkey-facility-text">Our strategic facility security services ensure the protection of infrastructure and facilities of various standards, with critical military, political, and economic value, against all types of sabotage and attacks that may occur in war or peacetime, even in the form of surprise or raids. With next-generation physical security measures, risk analysis, and specialized security planning, we ensure that strategic facilities continue to be used at full capacity and with confidence.</p>
+                </div>
+            </div>
+
+            <!-- Card: Special Operations -->
+            <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-transform hover:scale-105 w-full md:w-[45%] lg:w-[30%]">
+                <img src="special operation(n).jpg" alt="Special Operations" class="w-full h-auto rounded-t-lg" onerror="this.src='https://placehold.co/600x400/E2E8F0/1A202C?text=Special+Operations'">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2" id="turnkey-special-title">Special Operations</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" id="turnkey-special-text">
+                          Our professional operations team provides comprehensive support and strategic planning for special missions. We ensure that tasks are executed with the highest level of precision, discipline, and effectiveness, shaping the security environment with solutions that meet military standards.</p>
+                </div>
+            </div>
+
+            <!-- Card: Military Logistics -->
+            <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-transform hover:scale-105 w-full md:w-[45%] lg:w-[30%]">
+                <img src="military logistic planing(n).jpg" alt="Military Logistics" class="w-full h-auto rounded-t-lg" onerror="this.src='https://placehold.co/600x400/E2E8F0/1A202C?text=Military+Logistics'">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2" id="turnkey-military-title">Military Logistics</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" id="turnkey-military-text">Our military logistics services aim to uninterruptedly support the operational capabilities of forces. Our field logistics solutions, including supply chain management, maintenance and repair, and spare parts, along with the procurement of all types of tools, materials, and equipment, ensure that even the most demanding missions are accomplished effectively and safely.</p>
+                </div>
+            </div>
+
+            <!-- Card: Operational Simulation -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transform transition-transform hover:scale-105 w-full md:w-[45%] lg:w-[30%]">
+                <img src="simulation(n).jpg" alt="Operational Simulation" class="w-full h-auto rounded-t-lg" onerror="this.src='https://placehold.co/600x400/E2E8F0/1A202C?text=Operational+Simulation'">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2" id="turnkey-simulation-title">Operational Simulation</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" id="turnkey-simulation-text">Our operational simulation services provide the opportunity to experience potential scenarios in the field in a safe and controlled environment. We enhance operational effectiveness by developing personnel's decision-making, crisis management, and tactical skills through realistic exercises and simulation techniques.</p>
+                </div>
+            </div>
+
+            <!-- Card: Base Establishment Support -->
+            <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-transform hover:scale-105 w-full md:w-[45%] lg:w-[30%]">
+                <img src="base(n).jpg" alt="Base Establishment Support" class="w-full h-auto rounded-t-lg" onerror="this.src='https://placehold.co/600x400/E2E8F0/1A202C?text=Base+Support'">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2" id="turnkey-base-title">Base Establishment Support</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" id="turnkey-base-text">Our base establishment and operations support services aim to ensure that military bases reach the expected operational readiness levels. By reviewing infrastructure, military conditions, personnel, and material cadres, bases are inspected for their ability to support next-generation operational types, and corrective measures are implemented to ensure they are ready for operational missions.</p>
+                </div>
+            </div>
+
+            <!-- Card: Unmanned/Autonomous/Robotic Systems -->
+            <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-transform hover:scale-105 w-full md:w-[45%] lg:w-[30%]">
+                <img src="unmanned(n).jpg" alt="Unmanned/Autonomous/Robotic Systems" class="w-full h-auto rounded-t-lg" onerror="this.src='https://placehold.co/600x400/E2E8F0/1A202C?text=Unmanned+Systems'">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2" id="turnkey-robot-title">Unmanned/Autonomous/Robotic Systems</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" id="turnkey-robot-text">Our services in unmanned, autonomous, and robotic systems, which continue to become increasingly widespread in operational areas, make modern defense and security operations more effective and increase the likelihood of success. Through advanced technology integration, system design, and operational consulting, we facilitate the achievement of military objectives by units and institutions, and offer innovative solutions that protect and support human resources.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Us Section -->
+<section id="about-us" class="bg-white py-16">
+  <div class="container mx-auto px-4">
+    <!-- Title -->
+    <h2 class="text-4xl font-bold text-center text-gray-900 mb-12" id="about-us-title">
+      About Us
+    </h2>
+
+    <div class="flex flex-col md:flex-row items-center md:items-start space-y-8 md:space-y-0 md:space-x-12">
+      
+      <!-- Left: Image -->
+      <div class="w-full md:w-1/2">
+        <img src="photo_2025-09-02_13-54-36.jpg" 
+             alt="Global Solutions Team" 
+             class="w-full h-full object-cover rounded-lg shadow-lg"
+             onerror="this.src='https://placehold.co/600x400/E2E8F0/1A202C?text=Global+Solutions+Team'">
+      </div>
+
+      <!-- Right: Content -->
+      <div class="w-full md:w-1/2">
+        <p class="text-gray-600 mb-6 leading-relaxed text-base" id="about-us-text">
+          Global Solutions is a security and consulting company that:
+        </p>
+
+        <!-- List: Company Activities -->
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li id="operates">Operates in the international defense and security sector</li>
+          <li id="produces">
+            Produces innovative and integrated solutions against all types of threats, risks, and dangers that tend to increase in complexity.
+          </li>
+        </ul>
+
+        <p class="text-gray-600 mt-6 leading-relaxed text-base" id="with">
+          With our global experience, advanced technology-based approach, and expert staff, we provide security services to government agencies, private sector organizations, and critical infrastructures.
+        </p>
+
+        <!-- Mission / Vision -->
+        <h3 class="text-2xl font-semibold mt-8 mb-4" id="mission-title">Our goal is to:</h3>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li id="mission-text">
+            Ensure operational sustainability by meeting our customers' defense and security needs at the highest level
+          </li>
+          <li id="vision-title">Make threats/risks/hazards manageable</li>
+          <li id="vision-text">
+            Our vision is to be recognized as an innovative, reliable, and leading organization in the field of security and defense consulting. Our goal is to enable our customers to achieve strong, effective, and sustainable solutions under all circumstances through advanced technology, a strategic approach, and our expert staff.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto text-center px-4 ">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-left">
+                <div>
+                    <h4 class="font-bold text-lg mb-4" id="footer-company-title">Global Solutions</h4>
+                    <p class="text-sm text-gray-400" id="footer-company-text">We provide world-class defense and security solutions with a focus on innovation and effectiveness.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4" id="footer-links-title">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors" id="footer-link-home">Homepage</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors" id="footer-link-services">Services</a></li>
+                        <li><a href="#turnkey-solutions" class="text-gray-400 hover:text-white transition-colors" id="footer-link-solutions">Turnkey Solutions</a></li>
+                        <li><a href="#about-us" class="text-gray-400 hover:text-white transition-colors" id="footer-link-about">About Us</a></li>
+                    </ul>
+                </div>
+               
+                <div>
+                    <h4 class="font-bold text-lg mb-4" id="footer-contact-title">Contact</h4>
+                    
+                    <ul class="space-y-1 text-sm text-gray-400">
+                        <li><a href="mailto:info@global-solutions.com.tr" class="hover:text-white transition-colors" id="email">info@global-solutions.com.tr</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="text-gray-400 text-sm" id="footer-text">&copy; 2025 Global Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+    const content = {
+        en: {
+            pageTitle: "Global Solutions",
+            nav: {
+                home: "Homepage",
+                services: "Services",
+                turnkey: "Turnkey Solutions",
+                about: "About Us"
+            },
+            home: {
+                title: "Strategic Security and Consulting",
+                subtitle: "In a world with no room for error, we turn chaos into the battlespace and dominate it.",
+                cta: "Learn More"
+            },
+            services: {
+                title: "Our Services",
+                defence: {
+                    title: "Defence and Security",
+                    text: "We produce solutions in the field of defense and security that comply with national and international standards. We offer strategic, operative, and tactical consulting, integrated technology, and operational/managerial support options that accelerate organizations' decision-making and implementation processes. Our goal is to strengthen our customers' defense and security capacities, facilitating their effectiveness under all circumstances."
+                },
+                internal: {
+                    title: "Internal Security & Counter-Terrorism",
+                    text: "In the field of internal security and counter-terrorism, we provide professional consulting to conduct realistic threat analyses and develop effective strategies. We offer strong and sustainable solutions against all types of threats through specialized training programs, risk/crisis management, and operational support services for security forces and institutions."
+                },
+                technology: {
+                    title: "Technology Modernization",
+                    text: "With our technology modernization services, we increase the effectiveness of systems used in defense and security against current threats. By harmonizing existing infrastructures with modern solutions, we enhance the holistic suitability and deterrence of military capabilities."
+                },
+                logistics: {
+                    title: "Logistics Planning",
+                    text: "With our logistics planning services, we ensure that all resources needed in defense and security are deployed at the right time, in the right place, appropriately, and in the most efficient manner. We provide uninterrupted contribution to operational success through strategic supply chain management, field support, and rapid logistics solutions."
+                },
+                asymmetric: {
+                    title: "Asymmetric Operations",
+                    text: "Our expert staff delivers consultancy and training support against complex and unpredictable asymmetric threat scenarios. We help institutions and units develop superior strategic capabilities against hybrid threats and security challenges, maximizing their operational effectiveness."
+                },
+                strategic: {
+                    title: "Strategic/Operational/Tactical Planning Training",
+                    text: "With our strategic, operational, and tactical planning training, we strengthen decision-making and implementation processes at various levels within units, headquarters, and institutions. Our training programs, based on realistic scenarios, maximize personnel risk/crisis management, resource utilization, and operational effectiveness."
+                },
+                land: {
+                    title: "Land Forces Training",
+                    text: "With our Land Forces training, we aim to develop the knowledge, skills, and resilience personnel will need on the battlefield. With our next-generation training programs based on modern warfare doctrines, advanced tactical practices, and field experience, we maximize operational effectiveness and mission success."
+                },
+                navy: {
+                    title: "Navy Forces Training",
+                    text: "With our Navy training, we ensure the development of strategic, operational, and tactical skills required in the maritime operational environment. With our next-generation training programs focused on modern naval operational doctrines, maritime security, and operational planning, we contribute to ensuring sea control and coastal defense, and protecting maritime rights and interests."
+                },
+                air: {
+                    title: "Air Forces Training",
+                    text: "Our Air Force training focuses on developing the strategic perspective, technical knowledge, and operational competencies personnel need for air operations. Our training programs, designed on modern air defense doctrines, advanced flight planning, and mission execution, contribute to achieving effectiveness and superiority."
+                },
+                civil: {
+                    title: "Internal Security, Counter-Terrorism, And Civil Security Training",
+                    text: "Our internal security, counter-terrorism, and civil security training aims to prepare personnel for threats they may encounter in all environments, particularly in urban, rural, and sensitive areas. Through realistic scenarios, advanced tactical applications, and field-focused programs, we strengthen the effectiveness, deterrence, and risk/crisis management capabilities of security forces."
+                },
+                coastal: {
+                    title: "Border And Coastal Security Training",
+                    text: "Our border and coastal security training ensures that assigned units and personnel are prepared for all threats they may encounter at land and sea borders. Through advanced surveillance techniques, response strategies, and operational exercises, we increase the effectiveness of border and coastal security and provide the ability to respond quickly and accurately to threats."
+                },
+                equipment: {
+                    title: "Logistics And Equipment",
+                    text: "With our logistics and equipment services, we ensure the rapid procurement and supply of all types of tools, materials, equipment, and spare parts for security and defense. Through logistics planning, supply, maintenance and repair, supply management, and field support, we contribute to the uninterrupted and successful management of operations."
+                },
+                    training:{
+                 title: "Training",
+           },
+            },
+          
+            turnkey: {
+                title: "Turnkey Solutions",
+                marine: {
+                    title: "Marine, Coastal, & Port Security",
+                    text: "Our marine, coastal, and port security solutions protect naval bases, shipyards, maritime transportation hubs, ports, merchant/fishing vessels, oil/natural gas platforms and critical coastal facilities from potential threats. With advanced underwater/surface/air/satellite monitoring systems, risk analysis, and operational planning, we contribute to the uninterrupted security of sea/coastal/port facilities and the protection of critical infrastructure."
+                },
+              
+                facility: {
+                    title: "Strategic Facility Security",
+                    text: "Our strategic facility security services ensure the protection of infrastructure and facilities of various standards, with critical military, political, and economic value, against all types of sabotage and attacks that may occur in war or peacetime, even in the form of surprise or raids. With next-generation physical security measures, risk analysis, and specialized security planning, we ensure that strategic facilities continue to be used at full capacity and with confidence."
+                },
+                special: {
+                    title: "Special Operations",
+                    text: "Our professional operations team provides comprehensive support and strategic planning for special missions. We ensure that tasks are executed with the highest level of precision, discipline, and effectiveness, shaping the security environment with solutions that meet military standards.",
+                },
+                military: {
+                    title: "Military Logistics",
+                    text: "Our military logistics services aim to uninterruptedly support the operational capabilities of forces. Our field logistics solutions, including supply chain management, maintenance and repair, and spare parts, along with the procurement of all types of tools, materials, and equipment, ensure that even the most demanding missions are accomplished effectively and safely."
+                },
+                simulation: {
+                    title: "Operational Simulation",
+                    text: "Our operational simulation services provide the opportunity to experience potential scenarios in the field in a safe and controlled environment. We enhance operational effectiveness by developing personnel's decision-making, crisis management, and tactical skills through realistic exercises and simulation techniques."
+                },
+                base: {
+                    title: "Base Establishment Support",
+                    text: "Our base establishment and operations support services aim to ensure that military bases reach the expected operational readiness levels. By reviewing infrastructure, military conditions, personnel, and material cadres, bases are inspected for their ability to support next-generation operational types, and corrective measures are implemented to ensure they are ready for operational missions."
+                },
+                robot: {
+                    title: "Unmanned/Autonomous/Robotic Systems",
+                    text: "Our services in unmanned, autonomous, and robotic systems, which continue to become increasingly widespread in operational areas, make modern defense and security operations more effective and increase the likelihood of success. Through advanced technology integration, system design, and operational consulting, we facilitate the achievement of military objectives by units and institutions, and offer innovative solutions that protect and support human resources."
+                }
+            },
+              aboutUs: { 
+    title: "About Us",
+    text: "Global Solutions is a security and consulting company that:",
+    operates: "Operates in the international defense and security sector",
+    produces: "Produces innovative and integrated solutions against all types of threats, risks, and dangers that tend to increase in complexity.",
+    with: "With our global experience, advanced technology-based approach, and expert staff, we provide security services to government agencies, private sector organizations, and critical infrastructures.",
+
+    missionTitle: "Our goal is to:",
+    missionText: "Ensure operational sustainability by meeting our customers' defense and security needs at the highest level.",
+    visionTitle: "Make threats/risks/hazards manageable,",
+    visionText: "Build a secure future with strategic solutions."
+},
+
+
+            footer: {
+                companyTitle: "Global Solutions",
+                companyText: "We provide world-class defense and security solutions with a focus on innovation and effectiveness.",
+                linksTitle: "Quick Links",
+                linkHome: "Homepage",
+                linkServices: "Services",
+                linkSolutions: "Turnkey Solutions",
+                linkAbout: "About Us",
+                contactTitle: "Contact",
+                copyright: "&copy; 2025 Global Solutions. All rights reserved."
+            }
+        },
+        fr: {
+            pageTitle: "Global Solutions",
+            nav: {
+                home: "Accueil",
+                services: "Services",
+                turnkey: "Solutions clé en main",
+                about: "À propos"
+            },
+            home: {
+                title: "Sécurité et conseil stratégique",
+                subtitle: "Dans un monde où il n’y a pas de place pour l’erreur, nous transformons le chaos en champ de bataille et le dominons.",
+                cta: "En savoir plus"
+            },
+            services: {
+                title: "Nos services",
+                defence: {
+                    title: "Défense et Sécurité",
+                    text: "Nous produisons des solutions dans le domaine de la défense et de la sécurité conformes aux normes nationales et internationales. Nous offrons des services de conseil stratégique, opérationnel et tactique, des technologies intégrées ainsi que des options de soutien opérationnel et managérial qui accélèrent les processus de décision et de mise en œuvre des organisations. Notre objectif est de renforcer les capacités de défense et de sécurité de nos clients, afin de faciliter leur efficacité en toutes circonstances."
+                },
+                internal: {
+                    title: "Sécurité intérieure et contre-terrorisme",
+                    text: "Dans le domaine de la sécurité intérieure et du contre-terrorisme, nous offrons des services de conseil professionnel pour mener des analyses de menaces réalistes et développer des stratégies efficaces. Nous proposons des solutions solides et durables contre tous les types de menaces grâce à des programmes de formation spécialisés, à la gestion des risques et des crises, et à des services de soutien opérationnel pour les forces et institutions de sécurité."
+                },
+                technology: {
+                    title: "Modernisation technologique",
+                    text: "Avec nos services de modernisation technologique, nous augmentons l'efficacité des systèmes de défense et de sécurité face aux menaces actuelles. En harmonisant les infrastructures existantes avec des solutions modernes, nous améliorons l'adéquation holistique et la dissuasion des capacités militaires."
+                },
+                logistics: {
+                    title: "Planification logistique",
+                    text: "Avec nos services de planification logistique, nous nous assurons que toutes les ressources nécessaires à la défense et à la sécurité sont déployées au bon moment, au bon endroit, de manière appropriée et de la manière la plus efficace possible. Nous contribuons de manière ininterrompue au succès opérationnel grâce à la gestion stratégique de la chaîne d'approvisionnement, au soutien sur le terrain et à des solutions logistiques rapides."
+                },
+                asymmetric: {
+                    title: "Opérations asymétriques",
+                    text: "Notre personnel expert fournit des services de conseil et de formation face à des scénarios de menaces asymétriques complexes et imprévisibles. Nous aidons les institutions et les unités à développer des capacités stratégiques supérieures contre les menaces hybrides et les défis sécuritaires, en maximisant leur efficacité opérationnelle."
+                },
+                strategic: {
+                    title: "Formation en planification stratégique/opérationnelle/tactique",
+                    text: "Avec notre formation en planification stratégique, opérationnelle et tactique, nous renforçons les processus de prise de décision et de mise en œuvre à différents niveaux au sein des unités, des quartiers généraux et des institutions. Nos programmes de formation, basés sur des scénarios réalistes, maximisent la gestion des risques/crises du personnel, l'utilisation des ressources et l'efficacité opérationnelle."
+                },
+                land: {
+                    title: "Formation des forces terrestres",
+                    text: "Avec notre formation des forces terrestres, nous visons à développer les connaissances, les compétences et la résilience dont le personnel aura besoin sur le champ de bataille. Grâce à nos programmes de formation de nouvelle génération basés sur les doctrines de guerre modernes, les pratiques tactiques avancées et l'expérience sur le terrain, nous maximisons l'efficacité opérationnelle et le succès des missions."
+                },
+                navy: {
+                    title: "Formation des forces navales",
+                    text: "Avec notre formation navale, nous assurons le développement des compétences stratégiques, opérationnelles et tactiques requises dans l'environnement opérationnel maritime. Grâce à nos programmes de formation de nouvelle génération axés sur les doctrines navales modernes, la sécurité maritime et la planification opérationnelle, nous contribuons à assurer le contrôle des mers et la défense côtière, ainsi qu'à protéger les droits et intérêts maritimes."
+                },
+                air: {
+                    title: "Formation des forces aériennes",
+                    text: "Notre formation des forces aériennes se concentre sur le développement de la perspective stratégique, des connaissances techniques et des compétences opérationnelles dont le personnel a besoin pour les opérations aériennes. Nos programmes de formation, conçus sur les doctrines de défense aérienne modernes, la planification de vol avancée et l'exécution de missions, contribuent à atteindre l'efficacité et la supériorité."
+                },
+                civil: {
+                    title: "Formation en sécurité intérieure, contre-terrorisme et sécurité civile",
+                    text: "Notre formation en sécurité intérieure, contre-terrorisme et sécurité civile vise à préparer le personnel aux menaces qu'il pourrait rencontrer dans tous les environnements, en particulier dans les zones urbaines, rurales et sensibles. Grâce à des scénarios réalistes, des applications tactiques avancées et des programmes axés sur le terrain, nous renforçons l'efficacité, la dissuasion et les capacités de gestion des risques et des crises des forces de sécurité."
+                },
+                coastal: {
+                    title: "Formation en sécurité des frontières et du littoral",
+                    text: "Notre formation en sécurité des frontières et du littoral garantit que les unités et le personnel affectés sont préparés à toutes les menaces qu'ils pourraient rencontrer aux frontières terrestres et maritimes. Grâce à des techniques de surveillance avancées, des stratégies de réponse et des exercices opérationnels, nous augmentons l'efficacité de la sécurité des frontières et du littoral et offrons la capacité de répondre rapidement et avec précision aux menaces."
+                },
+                equipment: {
+                    title: "Logistique et équipement",
+                    text: "Avec nos services de logistique et d'équipement, nous assurons l'approvisionnement et la fourniture rapides de tous les types d'outils, de matériaux, d'équipements et de pièces de rechange pour la sécurité et la défense. Grâce à la planification logistique, à l'approvisionnement, à la maintenance et à la réparation, à la gestion des fournitures et au soutien sur le terrain, nous contribuons à la gestion ininterrompue et réussie des opérations."
+                },
+                training:{
+                title: "Formation",
+                },
+            },
+           
+            turnkey: {
+                title: "Solutions clés en main",
+                marine: {
+                    title: "Sécurité maritime, côtière et portuaire",
+                    text: "Nos solutions de sécurité maritime, côtière et portuaire protègent les bases navales, les chantiers navals, les plaques tournantes du transport maritime, les ports, les navires marchands/de pêche, les plateformes pétrolières/de gaz naturel et les installations côtières critiques contre les menaces potentielles. Avec des systèmes de surveillance sous-marins/de surface/aériens/satellitaires avancés, l'analyse des risques et la planification opérationnelle, nous contribuons à la sécurité ininterrompue des installations maritimes/côtières/portuaires et à la protection des infrastructures critiques."
+                },
+                 
+                facility: {
+                    title: "Sécurité des installations stratégiques",
+                    text: "Nos services de sécurité des installations stratégiques garantissent la protection des infrastructures et des établissements de différents standards, ayant une valeur militaire, politique et économique critique, contre tous types de sabotages et d’attaques pouvant survenir en temps de guerre ou de paix, y compris sous forme de surprises ou de raids. Grâce à des mesures de sécurité physique de nouvelle génération, à l’analyse des risques et à une planification sécuritaire spécialisée, nous veillons à ce que les installations stratégiques continuent d’être utilisées à pleine capacité et en toute confiance."
+                },
+                special: {
+                    title: "Opérations spéciales",
+                    text: "Notre équipe d’opérations professionnelles fournit un soutien complet et une planification stratégique pour les missions spéciales. Nous veillons à ce que les tâches soient exécutées avec le plus haut niveau de précision, de discipline et d’efficacité, en façonnant l’environnement de sécurité grâce à des solutions conformes aux normes militaires."
+                },
+                military: {
+                    title: "Logistique militaire",
+                    text: "Nos services de logistique militaire visent à soutenir de manière ininterrompue les capacités opérationnelles des forces. Nos solutions logistiques sur le terrain, y compris la gestion de la chaîne d'approvisionnement, la maintenance et la réparation, et les pièces de rechange, ainsi que l'approvisionnement en tous types d'outils, de matériaux et d'équipements, garantissent que même les missions les plus exigeantes sont accomplies de manière efficace et sûre."
+                },
+                simulation: {
+                    title: "Simulation opérationnelle",
+                    text: "Nos services de simulation opérationnelle offrent la possibilité de vivre des scénarios potentiels sur le terrain dans un environnement sûr et contrôlé. Nous améliorons l’efficacité opérationnelle en développant les compétences du personnel en matière de prise de décision, de gestion de crise et de tactique grâce à des exercices réalistes et des techniques de simulation."
+                },
+                base: {
+                    title: "Soutien à l'établissement de bases",
+                    text: "Nos services d'établissement de bases et de soutien aux opérations visent à garantir que les bases militaires atteignent les niveaux de préparation opérationnelle attendus. En examinant l'infrastructure, les conditions militaires, le personnel et les cadres matériels, les bases sont inspectées pour leur capacité à soutenir les types d'opérations de nouvelle génération, et des mesures correctives sont mises en œuvre pour s'assurer qu'elles sont prêtes pour les missions opérationnelles."
+                },
+                robot: {
+                    title: "Systèmes sans pilote/autonomes/robotiques",
+                    text: "Nos services dans les systèmes sans pilote, autonomes et robotiques, qui continuent de se généraliser dans les zones opérationnelles, rendent les opérations de défense et de sécurité modernes plus efficaces et augmentent les chances de succès. Grâce à l'intégration de technologies de pointe, à la conception de systèmes et au conseil opérationnel, nous facilitons l'atteinte des objectifs militaires par les unités et les institutions, et offrons des solutions innovantes qui protègent et soutiennent les ressources humaines."
+                }
+            },
+                aboutUs:{
+                        title: "À propos de nous",
+                        text: "Global Solutions est une société de sécurité et de conseil qui :",
+                        operates: "Opère dans le secteur international de la défense et de la sécurité",
+                        produces: "Produit des solutions innovantes et intégrées contre tous types de menaces, risques et dangers qui tendent à devenir de plus en plus complexes.",
+                        with: "Grâce à notre expérience mondiale, notre approche basée sur des technologies avancées et notre personnel expert, nous fournissons des services de sécurité aux organismes gouvernementaux, aux organisations du secteur privé et aux infrastructures critiques.",
+
+                        missionTitle: "Notre objectif est de :",
+                        missionText: "Assurer la durabilité opérationnelle en répondant aux besoins de défense et de sécurité de nos clients au plus haut niveau,",
+                        visionTitle: "Rendre les menaces/risques/dangers gérables,",
+                        visionText: "Construire un avenir sûr grâce à des solutions stratégiques."
+
+                    },
+
+            footer: {
+                companyTitle: "Global Solutions",
+                companyText: "Nous fournissons des solutions de défense et de sécurité de classe mondiale en mettant l'accent sur l'innovation et l'efficacité.",
+                linksTitle: "Liens rapides",
+                linkHome: "Accueil",
+                linkServices: "Services",
+                linkSolutions: "Solutions clés en main",
+                linkAbout: "À propos",
+                contactTitle: "Contact",
+                copyright: "© 2025 Global Solutions. Tous droits réservés."
+            }
+        }
+    };
+
+    let currentLang = 'en';
+
+    const updateContent = (lang) => {
+        // Update page title
+        document.getElementById('page-title').textContent = content[lang].pageTitle;
+        
+        // Update navigation
+        document.getElementById('nav-home').textContent = content[lang].nav.home;
+        document.getElementById('nav-services').textContent = content[lang].nav.services;
+        document.getElementById('nav-turnkey').textContent = content[lang].nav.turnkey;
+        document.getElementById('nav-about').textContent = content[lang].nav.about;
+        
+        // Update mobile navigation
+        document.getElementById('nav-home-mobile').textContent = content[lang].nav.home;
+        document.getElementById('nav-services-mobile').textContent = content[lang].nav.services;
+        document.getElementById('nav-turnkey-mobile').textContent = content[lang].nav.turnkey;
+        document.getElementById('nav-about-mobile').textContent = content[lang].nav.about;
+        
+        // Update home section
+        document.getElementById('home-title').textContent = content[lang].home.title;
+        document.getElementById('home-subtitle').textContent = content[lang].home.subtitle;
+        document.getElementById('home-cta').textContent = content[lang].home.cta;
+        
+        // Update services section
+        document.getElementById('services-title').textContent = content[lang].services.title;
+        document.getElementById('services-defence-title').textContent = content[lang].services.defence.title;
+        document.getElementById('services-defence-text').textContent = content[lang].services.defence.text;
+        document.getElementById('services-internal-title').textContent = content[lang].services.internal.title;
+        document.getElementById('services-internal-text').textContent = content[lang].services.internal.text;
+        document.getElementById('services-technology-title').textContent = content[lang].services.technology.title;
+        document.getElementById('services-technology-text').textContent = content[lang].services.technology.text;
+        document.getElementById('services-logistics-title').textContent = content[lang].services.logistics.title;
+        document.getElementById('services-logistics-text').textContent = content[lang].services.logistics.text;
+        document.getElementById('services-asymmetric-title').textContent = content[lang].services.asymmetric.title;
+        document.getElementById('services-asymmetric-text').textContent = content[lang].services.asymmetric.text;
+        document.getElementById("services-training-title").textContent = content[lang].services.training.title;
+
+        
+        // Update training section
+        document.getElementById('services-strategic-title').textContent = content[lang].services.strategic.title;
+        document.getElementById('services-strategic-text').textContent = content[lang].services.strategic.text;
+        document.getElementById('services-land-title').textContent = content[lang].services.land.title;
+        document.getElementById('services-land-text').textContent = content[lang].services.land.text;
+        document.getElementById('services-navy-title').textContent = content[lang].services.navy.title;
+        document.getElementById('services-navy-text').textContent = content[lang].services.navy.text;
+        document.getElementById('services-air-title').textContent = content[lang].services.air.title;
+        document.getElementById('services-air-text').textContent = content[lang].services.air.text;
+        document.getElementById('services-civil-title').textContent = content[lang].services.civil.title;
+        document.getElementById('services-civil-text').textContent = content[lang].services.civil.text;
+        document.getElementById('services-coastal-title').textContent = content[lang].services.coastal.title;
+        document.getElementById('services-coastal-text').textContent = content[lang].services.coastal.text;
+        document.getElementById('services-equipment-title').textContent = content[lang].services.equipment.title;
+        document.getElementById('services-equipment-text').textContent = content[lang].services.equipment.text;
+        
+        // Update turnkey solutions section
+        document.getElementById('turnkey-title').textContent = content[lang].turnkey.title;
+        document.getElementById('turnkey-marine-title').textContent = content[lang].turnkey.marine.title;
+        document.getElementById('turnkey-marine-text').textContent = content[lang].turnkey.marine.text;
+        document.getElementById('turnkey-facility-title').textContent = content[lang].turnkey.facility.title;
+        document.getElementById('turnkey-facility-text').textContent = content[lang].turnkey.facility.text;
+        document.getElementById('turnkey-special-title').textContent = content[lang].turnkey.special.title;
+        document.getElementById('turnkey-special-text').textContent = content[lang].turnkey.special.text;
+        document.getElementById('turnkey-military-title').textContent = content[lang].turnkey.military.title;
+        document.getElementById('turnkey-military-text').textContent = content[lang].turnkey.military.text;
+        document.getElementById('turnkey-simulation-title').textContent = content[lang].turnkey.simulation.title;
+        document.getElementById('turnkey-simulation-text').textContent = content[lang].turnkey.simulation.text;
+        document.getElementById('turnkey-base-title').textContent = content[lang].turnkey.base.title;
+        document.getElementById('turnkey-base-text').textContent = content[lang].turnkey.base.text;
+        document.getElementById('turnkey-robot-title').textContent = content[lang].turnkey.robot.title;
+        document.getElementById('turnkey-robot-text').textContent = content[lang].turnkey.robot.text;
+        
+        // Update about us section
+        document.getElementById('about-us-title').textContent = content[lang].aboutUs.title;
+        document.getElementById('about-us-text').textContent = content[lang].aboutUs.text;
+        document.getElementById('mission-title').textContent = content[lang].aboutUs.missionTitle;
+        document.getElementById('mission-text').textContent = content[lang].aboutUs.missionText;
+        document.getElementById('vision-title').textContent = content[lang].aboutUs.visionTitle;
+        document.getElementById('vision-text').textContent = content[lang].aboutUs.visionText;
+
+        
+        document.getElementById('operates').textContent = content[lang].aboutUs.operates;
+        document.getElementById('produces').textContent = content[lang].aboutUs.produces;
+        document.getElementById('with').textContent = content[lang].aboutUs.with;
+
+        
+        
+        
+        // Update footer
+        document.getElementById('footer-company-title').textContent = content[lang].footer.companyTitle;
+        document.getElementById('footer-company-text').textContent = content[lang].footer.companyText;
+        document.getElementById('footer-links-title').textContent = content[lang].footer.linksTitle;
+        document.getElementById('footer-link-home').textContent = content[lang].footer.linkHome;
+        document.getElementById('footer-link-services').textContent = content[lang].footer.linkServices;
+        document.getElementById('footer-link-solutions').textContent = content[lang].footer.linkSolutions;
+        document.getElementById('footer-link-about').textContent = content[lang].footer.linkAbout;
+        document.getElementById('footer-contact-title').textContent = content[lang].footer.contactTitle;
+        document.getElementById('footer-text').innerHTML = content[lang].footer.copyright;
+
+        // Update button text
+        const switcher = document.getElementById('lang-switcher');
+        if (lang === 'en') {
+            switcher.textContent = 'Français';
+        } else {
+            switcher.textContent = 'English';
+        }
+    };
+
+    document.getElementById('lang-switcher').addEventListener('click', () => {
+        currentLang = currentLang === 'en' ? 'fr' : 'en';
+        updateContent(currentLang);
+    });
+
+    // Initial content load
+    document.addEventListener('DOMContentLoaded', () => {
+        updateContent(currentLang);
+    });
+
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+</body>
+</html>
+
